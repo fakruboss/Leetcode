@@ -2,7 +2,7 @@ package fakru.leetcode;
 
 import java.util.Stack;
 
-public class LC716_MaxStack {
+public class LC716 {
 
   Stack<Integer> stack;
   Stack<Integer> maxStack;
@@ -10,7 +10,7 @@ public class LC716_MaxStack {
   /**
    * initialize your data structure here.
    */
-  public LC716_MaxStack() {
+  public LC716() {
     stack = new Stack<>();
     maxStack = new Stack<>();
   }
@@ -57,23 +57,20 @@ public class LC716_MaxStack {
     }
     return max;
   }
-}
-
-class LC716_MaxStackDemo {
 
   public static void main(String[] args) {
-    LC716_MaxStack lc716_maxStack = new LC716_MaxStack();
-    lc716_maxStack.push(5);
-    lc716_maxStack.peekMax();
-    lc716_maxStack.popMax();
-    lc716_maxStack.push(5);
-    lc716_maxStack.push(1);
-    lc716_maxStack.push(2);
-    lc716_maxStack.push(2);
-    lc716_maxStack.push(2);
-    lc716_maxStack.push(6);
-    System.out.println(lc716_maxStack.top());
-    System.out.println(lc716_maxStack.popMax());
-    System.out.println(lc716_maxStack.popMax());
+    LC716 maxStack = new LC716();
+    maxStack.push(5);
+    maxStack.peekMax();
+    maxStack.popMax();
+    maxStack.push(5);
+    maxStack.push(1);
+    maxStack.push(2);
+    maxStack.push(2);
+    maxStack.push(2);
+    maxStack.push(6);
+    System.out.println(maxStack.top());
+    System.out.println(maxStack.popMax());
+    System.out.println(maxStack.popMax());
   }
 }
