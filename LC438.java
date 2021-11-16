@@ -1,9 +1,8 @@
 package fakru.leetcode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class LC438 {
 
@@ -13,29 +12,23 @@ public class LC438 {
     if (sLen < pLen) {
       return result;
     }
-    Map<Character, Integer> sMap = new HashMap<>();
-    Map<Character, Integer> pMap = new HashMap<>();
+    int[] sMap = new int[26];
+    int[] pMap = new int[26];
     for (char c : p.toCharArray()) {
-      pMap.put(c, pMap.getOrDefault(c, 0) + 1);
+      ++pMap[c - 'a'];
     }
     for (int i = 0; i < pLen; ++i) {
-      sMap.put(s.charAt(i), sMap.getOrDefault(s.charAt(i), 0) + 1);
+      ++sMap[s.charAt(i) - 'a'];
     }
-    if (sMap.equals(pMap)) {
+    if (Arrays.equals(sMap, pMap)) {
       result.add(0);
     }
     for (int i = 1; i <= sLen - pLen; ++i) {
       char exChar = s.charAt(i - 1);
       char currChar = s.charAt(i + pLen - 1);
-      if (exChar != currChar && sMap.containsKey(exChar)) {
-        if (sMap.get(exChar) == 1) {
-          sMap.remove(exChar);
-        } else {
-          sMap.put(exChar, sMap.get(exChar) - 1);
-        }
-      sMap.put(currChar, sMap.getOrDefault(currChar, 0) + 1);
-      }
-      if (sMap.equals(pMap)) {
+      --sMap[exChar - 'a'];
+      ++sMap[currChar - 'a'];
+      if (Arrays.equals(sMap, pMap)) {
         result.add(i);
       }
     }
