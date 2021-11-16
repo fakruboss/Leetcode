@@ -27,14 +27,14 @@ public class LC438 {
     for (int i = 1; i <= sLen - pLen; ++i) {
       char exChar = s.charAt(i - 1);
       char currChar = s.charAt(i + pLen - 1);
-      if (sMap.containsKey(exChar)) {
+      if (exChar != currChar && sMap.containsKey(exChar)) {
         if (sMap.get(exChar) == 1) {
           sMap.remove(exChar);
         } else {
           sMap.put(exChar, sMap.get(exChar) - 1);
         }
-      }
       sMap.put(currChar, sMap.getOrDefault(currChar, 0) + 1);
+      }
       if (sMap.equals(pMap)) {
         result.add(i);
       }
