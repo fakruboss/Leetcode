@@ -26,8 +26,10 @@ public class LC438 {
     for (int i = 1; i <= sLen - pLen; ++i) {
       char exChar = s.charAt(i - 1);
       char currChar = s.charAt(i + pLen - 1);
-      --sMap[exChar - 'a'];
-      ++sMap[currChar - 'a'];
+      if (exChar != currChar) {
+        --sMap[exChar - 'a'];
+        ++sMap[currChar - 'a'];
+      }
       if (Arrays.equals(sMap, pMap)) {
         result.add(i);
       }
