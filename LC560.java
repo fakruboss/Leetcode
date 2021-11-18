@@ -5,25 +5,10 @@ import java.util.Map;
 
 public class LC560 {
 
-  public int subArraySum(int[] nums, int k) {
+  // SOLUTION 1 : Brute force
+  public int subarraySum(int[] nums, int k) {
     int count = 0;
-    int prefixSum = 0;
-    Map<Integer, Integer> map = new HashMap<>();
-    map.put(0, 1);
-    for (int num : nums) {
-      prefixSum += num;
-      if (map.containsKey(prefixSum - k)) {
-        count += map.get(prefixSum - k);
-      }
-      map.put(prefixSum, map.getOrDefault(prefixSum, 0) + 1);
-    }
-    return count;
-  }
-
-  public int subArraySum2(int[] nums, int k) {
-    int n = nums.length;
-    int count = 0;
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0, n = nums.length; i < n; ++i) {
       int currSum = nums[i];
       if (currSum == k) {
         ++count;
@@ -38,8 +23,25 @@ public class LC560 {
     return count;
   }
 
+  // SOLUTION 2 : Prefix sum + Hashmap
+  public int subarraySum2(int[] nums, int k) {
+    int count = 0;
+    Map<Integer, Integer> prefixSum = new HashMap<>();
+    int currSum = 0;
+    for (int num : nums) {
+      currSum += num;
+      if (currSum == k) {
+        ++count;
+      }
+      if (prefixSum.containsKey(currSum - k)) {
+        count += prefixSum.get(currSum - k);
+      }
+      prefixSum.put(currSum, prefixSum.getOrDefault(currSum, 0) + 1);
+    }
+    return count;
+  }
+
   public static void main(String[] args) {
-    System.out.println(new LC560().subArraySum(new int[]{1, 2, 3}, 3));
-    System.out.println(new LC560().subArraySum2(new int[]{1, 2, 3}, 3));
+    System.out.println(new LC560().subarraySum2(new int[]{1, 2, 3}, 3));
   }
 }
