@@ -33,7 +33,7 @@ public class LC15 {
   }
 
   public static void main(String[] args) {
-    List<List<Integer>> res = new LC15().threeSum(new int[]{-3, 1, 2, 3});
+    List<List<Integer>> res = new LC15().threeSum(new int[]{-3, 1, 2, 3, 4});
     System.out.println(res);
   }
 }
