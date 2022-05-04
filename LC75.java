@@ -1,6 +1,10 @@
 package fakru.leetcode;
 
+import static fakru.leetcode.utils.PrintUtils.print;
+
 import java.util.Arrays;
+import java.util.Optional;
+import kotlin.reflect.jvm.internal.impl.util.ModuleVisibilityHelper.EMPTY;
 
 /**
  * https://leetcode.com/problems/sort-colors/submissions/
@@ -44,10 +48,27 @@ public class LC75 {
     }
   }
 
+  public void sortColors3(int[] nums) {
+    int left = 0, right = nums.length - 1, i = 0;
+    while (i <= right) {
+      if (nums[i] == 0) {
+        int temp = nums[left];
+        nums[left++] = nums[i];
+        nums[i++] = temp;
+      } else if (nums[i] == 2) {
+        int temp = nums[right];
+        nums[right--] = nums[i];
+        nums[i] = temp;
+      } else {
+        ++i;
+      }
+    }
+  }
+
   public static void main(String[] args) {
-    int[] nums = {0, 0, 0, 0, 0};
+    int[] nums = {2, 0, 2, 1, 1, 0};
     LC75 lc75 = new LC75();
-    lc75.sortColors2(nums);
-    System.out.println(Arrays.toString(nums));
+    lc75.sortColors3(nums);
+    print(Arrays.toString(nums));
   }
 }

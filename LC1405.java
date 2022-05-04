@@ -3,6 +3,7 @@ package fakru.leetcode;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
+/*
 public class LC1405 {
 
   class Pair {
@@ -57,3 +58,4 @@ public class LC1405 {
     System.out.println(s);
   }
 }
+*/

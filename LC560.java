@@ -25,9 +25,8 @@ public class LC560 {
 
   // SOLUTION 2 : Prefix sum + Hashmap
   public int subarraySum2(int[] nums, int k) {
-    int count = 0;
+    int count = 0, currSum = 0;
     Map<Integer, Integer> prefixSum = new HashMap<>();
-    int currSum = 0;
     for (int num : nums) {
       currSum += num;
       if (currSum == k) {
