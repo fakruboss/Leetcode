@@ -14,13 +14,13 @@ package fakru.leetcode;
 
 public class LC45 {
 
-  public int jump(int[] A) {
-    int jumps = 0, curEnd = 0, curFarthest = 0;
-    for (int i = 0; i < A.length - 1; i++) {
-      curFarthest = Math.max(curFarthest, i + A[i]);
-      if (i == curEnd) {
-        jumps++;
-        curEnd = curFarthest;
+  public int jump(int[] nums) {
+    int jumps = 0, levelMax = 0, currMax = 0;
+    for (int i = 0, n = nums.length; i < n - 1; ++i) {
+      currMax = Math.max(currMax, i + nums[i]);
+      if (i == levelMax) {
+        levelMax = currMax;
+        ++jumps;
       }
     }
     return jumps;

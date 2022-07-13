@@ -37,7 +37,50 @@ public class LC76 {
     return minLen == Integer.MAX_VALUE ? "" : s.substring(start, end + 1);
   }
 
+  public String minWindow2(String s, String t) {
+    int[] map = new int[128];
+    for (char c : t.toCharArray()) {
+      map[c]++;
+    }
+    int start = 0, end = 0, minStart = 0, minLen = Integer.MAX_VALUE, counter = t.length();
+    print(map);
+    while (end < s.length()) {
+      final char sEnd = s.charAt(end);
+      if (map[sEnd] > 0) {
+        counter--;
+      }
+      map[sEnd]--;
+      end++;
+      print(map);
+      while (counter == 0) {
+        if (minLen > end - start) {
+          minLen = end - start;
+          minStart = start;
+        }
+        final char sStart = s.charAt(start);
+        map[sStart]++;
+        print(map);
+        if (map[sStart] > 0) {
+          counter++;
+        }
+        start++;
+      }
+    }
+
+    return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
+  }
+
   public static void main(String[] args) {
-    new LC76().minWindow("", "");
+    String s = new LC76().minWindow2("abaa", "aa");
+    System.out.println(s);
+  }
+
+  private void print(int[] nums) {
+    for (int i = 0; i < nums.length; ++i) {
+      if (nums[i] != 0) {
+        System.out.print((char) i + " " + nums[i] + " | ");
+      }
+    }
+    System.out.println();
   }
 }

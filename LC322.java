@@ -19,6 +19,6 @@ public class LC322 {
   }
 
   public static void main(String[] args) {
-    System.out.println(new LC322().coinChange(new int[]{1, 2, 5}, 11));
+    System.out.println(new LC322().coinChange(new int[]{1, 2, 5}, 7));
   }
 }

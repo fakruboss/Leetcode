@@ -1,7 +1,9 @@
 package fakru.leetcode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class LC3 {
 
@@ -55,18 +57,32 @@ public class LC3 {
   public int lengthOfLongestSubstring3(String s) {
     int maxLength = 0;
     Map<Character, Integer> map = new HashMap<>();
-    for (int i = 0, j = 0, n = s.length(); i < n; ++i) {
-      char c = s.charAt(i);
+    for (int end = 0, start = 0, n = s.length(); end < n; ++end) {
+      char c = s.charAt(end);
       if (map.containsKey(c)) {
-        j = Math.max(j, map.get(c) + 1);
+        start = Math.max(start, map.get(c) + 1);
       }
-      map.put(c, i);
-      maxLength = Math.max(maxLength, i - j + 1);
+      map.put(c, end);
+      maxLength = Math.max(maxLength, end - start + 1);
     }
     return maxLength;
   }
 
+  public int lengthOfLongestSubstring4(String s) {
+    int maxLen = 0;
+    Set<Character> set = new HashSet<>();
+    for (int start = 0, end = 0; end < s.length();) {
+      if (set.add(s.charAt(end))) {
+        maxLen = Math.max(maxLen, end++ - start + 1);
+      } else {
+        set.remove(s.charAt(end));
+        ++start;
+      }
+    }
+    return maxLen;
+  }
+
   public static void main(String[] args) {
-    System.out.println(new LC3().lengthOfLongestSubstring3("abba"));
+    System.out.println(new LC3().lengthOfLongestSubstring4("pwwkew"));
   }
 }

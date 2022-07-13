@@ -30,7 +30,8 @@ public class LC347 {
   }
 
   public static void main(String[] args) {
-    int[] ints = new LC347().topKFrequent(new int[]{1, 1, 1, 2, 2, 3, 4, 4, 4}, 2);
+    int[] nums = {1, 1, 1, 2, 2, 3, 4, 4, 4};
+    int[] ints = new LC347().topKFrequent(nums, 2);
     System.out.println(Arrays.toString(ints));
   }
 }

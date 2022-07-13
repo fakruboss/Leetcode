@@ -71,6 +71,6 @@ public class LC166 {
   }
 
   public static void main(String[] args) {
-    System.out.println(new LC166().fractionToDecimal2(-1, -2147483648));
+    System.out.println(new LC166().fractionToDecimal2(11, 7));
   }
 }

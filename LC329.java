@@ -21,19 +21,19 @@ public class LC329 {
     return result;
   }
 
-  private int dfs(int row, int col, int m, int n, int[][] mat, int[][] dp, int prev) {
-    if (row < 0 || row >= m || col < 0 || col >= n || mat[row][col] <= prev) {
+  private int dfs(int i, int j, int m, int n, int[][] mat, int[][] dp, int prev) {
+    if (i < 0 || i >= m || j < 0 || j >= n || mat[i][j] <= prev) {
       return 0;
     }
-    if (dp[row][col] != 0) {
-      return dp[row][col];
+    if (dp[i][j] != 0) {
+      return dp[i][j];
     }
     int result = 1;
-    result = Math.max(result, 1 + dfs(row + 1, col, m, n, mat, dp, mat[row][col]));
-    result = Math.max(result, 1 + dfs(row - 1, col, m, n, mat, dp, mat[row][col]));
-    result = Math.max(result, 1 + dfs(row, col + 1, m, n, mat, dp, mat[row][col]));
-    result = Math.max(result, 1 + dfs(row, col - 1, m, n, mat, dp, mat[row][col]));
-    dp[row][col] = result;
+    result = Math.max(result, 1 + dfs(i + 1, j, m, n, mat, dp, mat[i][j]));
+    result = Math.max(result, 1 + dfs(i - 1, j, m, n, mat, dp, mat[i][j]));
+    result = Math.max(result, 1 + dfs(i, j + 1, m, n, mat, dp, mat[i][j]));
+    result = Math.max(result, 1 + dfs(i, j - 1, m, n, mat, dp, mat[i][j]));
+    dp[i][j] = result;
     return result;
   }
 

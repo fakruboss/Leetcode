@@ -46,6 +46,6 @@ public class LC128 {
 
   public static void main(String[] args) {
     System.out.println(
-        new LC128().longestConsecutive2(new int[]{-8, -4, 9, 9, 4, 6, 1, -4, -1, 6, 8}));
+        new LC128().longestConsecutive2(new int[]{100, 4, 101, 200, 3, 2, 5}));
   }
 }
