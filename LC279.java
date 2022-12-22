@@ -12,7 +12,8 @@ public class LC279 {
     Arrays.fill(dp, Integer.MAX_VALUE);
     dp[0] = 0;
     for (int i = 1; i <= n; ++i) {
-      nums.add(i * i);
+      i = i * i;
+      nums.add(i);
     }
     for (int num : nums) {
       for (int i = num; i <= n; ++i) {

@@ -14,11 +14,14 @@ public class LC380 {
 
   public static void main(String[] args) {
     RandomizedSet set = new RandomizedSet();
-    System.out.println(set.insert(0));
     System.out.println(set.insert(1));
-    System.out.println(set.remove(0));
     System.out.println(set.insert(2));
-    System.out.println(set.remove(1));
+    System.out.println(set.insert(3));
+    System.out.println(set.insert(4));
+    System.out.println(set.insert(5));
+    System.out.println(set.remove(3));
+    System.out.println(set.insert(6));
+    System.out.println(set.remove(4));
     System.out.println(set.getRandom());
   }
 }

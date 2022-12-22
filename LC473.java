@@ -46,7 +46,7 @@ public class LC473 {
 
   public static void main(String[] args) {
     LC473 lc473 = new LC473();
-    boolean makesquare = lc473.makesquare(new int[]{1, 2, 3, 4, 5, 6, 7, 8});
+    boolean makesquare = lc473.makesquare(new int[]{2, 2, 3, 3, 2});
     System.out.println(makesquare);
   }
 }

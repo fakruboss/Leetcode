@@ -32,9 +32,7 @@ public class LC560 {
       if (currSum == k) {
         ++count;
       }
-      if (prefixSum.containsKey(currSum - k)) {
-        count += prefixSum.get(currSum - k);
-      }
+      count += prefixSum.getOrDefault(currSum - k, 0);
       prefixSum.put(currSum, prefixSum.getOrDefault(currSum, 0) + 1);
     }
     return count;

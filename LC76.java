@@ -70,8 +70,37 @@ public class LC76 {
     return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
   }
 
+  public String minWindow3(String s, String t) {
+    Map<Character, Integer> sFreq = new HashMap<>();
+    Map<Character, Integer> tFreq = new HashMap<>();
+    for (int i = 0; i < t.length(); ++i)
+      tFreq.put(t.charAt(i), tFreq.getOrDefault(t.charAt(i), 0) + 1);
+    int have = 0, need = tFreq.size(), left = 0;
+    int resL = -1, resR = -1, minLen = Integer.MAX_VALUE;
+    for (int right = 0; right < s.length(); ++right) {
+      char c = s.charAt(right);
+      sFreq.put(c, sFreq.getOrDefault(c, 0) + 1);
+      if (tFreq.containsKey(c) && sFreq.get(c) == tFreq.get(c)) {
+        ++have;
+      }
+      while (have == need) {
+        if (right - left + 1 < minLen) {
+          minLen = right - left + 1;
+          resL = left;
+          resR = right;
+        }
+        char leftC = s.charAt(left);
+        sFreq.put(leftC, sFreq.get(leftC) - 1);
+        if (tFreq.containsKey(leftC) && sFreq.get(leftC) < tFreq.get(leftC))
+          --have;
+        ++left;
+      }
+    }
+    return minLen == Integer.MAX_VALUE ? "" : s.substring(resL, resR + 1);
+  }
+
   public static void main(String[] args) {
-    String s = new LC76().minWindow2("abaa", "aa");
+    String s = new LC76().minWindow3("ADOBECODEBANC", "ABC");
     System.out.println(s);
   }
 

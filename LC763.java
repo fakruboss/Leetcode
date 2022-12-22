@@ -26,8 +26,5 @@ public class LC763 {
 
   public static void main(String[] args) {
     System.out.println(new LC763().partitionLabels("ababcbacadefegdehijhklij"));
-
-    int[] a = new int[1];
-    Arrays.equals(a, a);
   }
 }

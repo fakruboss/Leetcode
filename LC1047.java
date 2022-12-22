@@ -75,9 +75,9 @@ public class LC1047 {
   }
 
   public static void main(String[] args) {
-//    String s = new LC1047().removeDuplicates("abbaca");
-//    System.out.println(s);
-    int i = LC1047.countFamilyLogins(Arrays.asList("bag", "sfe", "cbh", "cbh", "red"));
-    System.out.println(i);
+    String s = new LC1047().removeDuplicates("abbaca");
+    System.out.println(s);
+//    int i = LC1047.countFamilyLogins(Arrays.asList("bag", "sfe", "cbh", "cbh", "red"));
+//    System.out.println(i);
   }
 }

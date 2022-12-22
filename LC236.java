@@ -30,9 +30,11 @@ public class LC236 {
     root.left.right = new TreeNode(2);
     root.left.right.left = new TreeNode(7);
     root.left.right.right = new TreeNode(4);
-    root.right.left = new TreeNode(1);
+    root.right.left = new TreeNode(0);
     root.right.right = new TreeNode(8);
 
-    new LC236().lowestCommonAncestor(root, root.left, root.left.right.right);
+    TreeNode left = root.right.right;
+    TreeNode right = root.left.right.left;
+    new LC236().lowestCommonAncestor(root, left, right);
   }
 }

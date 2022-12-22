@@ -1,33 +1,35 @@
 package fakru.leetcode;
 
-import java.util.Stack;
-
 public class LC402 {
 
+  private StringBuilder buildLowestNumber(String num, int k, StringBuilder result) {
+    if (k == 0) {
+      return result.append(num);
+    }
+    if (num.length() == k) {
+      return result;
+    }
+    int minIdx = 0;
+    for (int i = 1; i <= k; ++i) {
+      if (num.charAt(i) < num.charAt(minIdx)) {
+        minIdx = i;
+      }
+    }
+    result.append(num.charAt(minIdx));
+    return buildLowestNumber(num.substring(minIdx + 1), k - minIdx, result);
+  }
+
   public String removeKdigits(String num, int k) {
-    Stack<Character> stack = new Stack<>();
-    int i = 0;
-    while (i < num.length()) {
-      char c = num.charAt(i);
-      while (k > 0 && !stack.isEmpty() && stack.peek() > c) {
-        stack.pop();
-        --k;
+    String lowestNum = buildLowestNumber(num, k, new StringBuilder()).toString();
+    for (int i = 0; i < lowestNum.length(); ++i) {
+      if (lowestNum.charAt(i) != '0') {
+        return lowestNum.substring(i);
       }
-      stack.push(c);
-      ++i;
     }
-    StringBuilder result = new StringBuilder();
-    for (int j = 0, n = stack.size(); j < n - k; ++j) {
-      if (result.length() == 0 && stack.get(j) == '0') {
-        continue;
-      }
-      result.append(stack.get(j));
-    }
-    result.append(num.substring(i));
-    return result.length() == 0 ? "0" : result.toString();
+    return "0";
   }
 
   public static void main(String[] args) {
-    System.out.println(new LC402().removeKdigits("9", 1));
+    System.out.println(new LC402().removeKdigits("10056", 3));
   }
 }

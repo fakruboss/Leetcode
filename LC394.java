@@ -2,6 +2,7 @@ package fakru.leetcode;
 
 import java.util.Stack;
 
+// https://leetcode.com/problems/decode-string/
 public class LC394 {
 
   public String decodeString(String s) {
@@ -47,9 +48,7 @@ public class LC394 {
         int count = intStack.pop();
         StringBuilder temp = curr;
         curr = new StringBuilder(stringStack.pop());
-        for (int i = 0; i < count; ++i) {
-          curr.append(temp);
-        }
+        curr.append(String.valueOf(temp).repeat(Math.max(0, count)));
       } else {
         curr.append(c);
       }

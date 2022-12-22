@@ -26,6 +26,6 @@ public class LC926 {
   }
 
   public static void main(String[] args) {
-    System.out.println(new LC926().minFlipsMonoIncr("001110000"));
+    System.out.println(new LC926().minFlipsMonoIncr("010110"));
   }
 }

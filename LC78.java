@@ -26,7 +26,7 @@ public class LC78 {
   }
 
   public static void main(String[] args) {
-    List<List<Integer>> subsets = new LC78().subsets(new int[]{1, 2, 3, 3});
+    List<List<Integer>> subsets = new LC78().subsets(new int[]{1, 2, 3});
     System.out.println(subsets);
   }
 }

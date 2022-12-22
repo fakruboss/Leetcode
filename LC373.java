@@ -8,17 +8,6 @@ import java.util.PriorityQueue;
 
 public class LC373 {
 
-  public static void main(String[] args) {
-    LC373Solution solution = new LC373Solution();
-    int[] nums1 = {1, 7, 11};
-    int[] nums2 = {2, 4, 6};
-    List<List<Integer>> result = solution.kSmallestPairs(nums1, nums2, 3);
-    result.forEach(System.out::println);
-  }
-}
-
-class LC373Solution {
-
   public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
     List<List<Integer>> result = new ArrayList<>();
     Comparator<List<Integer>> comp = Comparator.comparingInt(a -> (a.get(0) + a.get(1)));
@@ -34,5 +23,13 @@ class LC373Solution {
       }
     }
     return result;
+  }
+
+  public static void main(String[] args) {
+    LC373 solution = new LC373();
+    int[] nums1 = {1, 7, 11};
+    int[] nums2 = {2, 4, 6};
+    List<List<Integer>> result = solution.kSmallestPairs(nums1, nums2, 5);
+    result.forEach(System.out::println);
   }
 }

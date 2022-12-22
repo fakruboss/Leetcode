@@ -73,9 +73,10 @@ public class LC3 {
     Set<Character> set = new HashSet<>();
     for (int start = 0, end = 0; end < s.length();) {
       if (set.add(s.charAt(end))) {
-        maxLen = Math.max(maxLen, end++ - start + 1);
+        ++end;
+        maxLen = Math.max(maxLen, end - start);
       } else {
-        set.remove(s.charAt(end));
+        set.remove(s.charAt(start));
         ++start;
       }
     }

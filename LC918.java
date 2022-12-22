@@ -4,13 +4,10 @@ public class LC918 {
 
   public static void main(String[] args) {
     int[] nums = {1, -2, 3, -2};
-    LC918Solution solution = new LC918Solution();
+    LC918 solution = new LC918();
     int x = solution.maxSubarraySumCircular(nums);
     System.out.println(x);
   }
-}
-
-class LC918Solution {
 
   public int maxSubarraySumCircular(int[] nums) {
     int total = 0;
